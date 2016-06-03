@@ -37,5 +37,6 @@ func ParseClusters(dot string, u *Undot) (string, error) {
 	dot = CLUSTER_MATCH.ReplaceAllString(dot, "")
 	rm[2] = ParseAttributes(rm[2], r)
 	rm[2] = ParseNodes(rm[2], r)
+	u.Clusters[rm[1]] = r
 	return dot, nil
 }
