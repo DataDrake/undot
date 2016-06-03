@@ -2,7 +2,7 @@ package undot
 
 import "regexp"
 
-var EDGE_MATCH = regexp.MustCompile("")
+var EDGE_MATCH = regexp.MustCompile("\\s*(\\S+)\\s+(<?->?)\\s+(\\S+)(?:\\s*\\[(.*)\\])?;")
 
 type Edge struct {
 	Attributes map[string]string

@@ -2,7 +2,7 @@ package undot
 
 import "regexp"
 
-var ATTRIBUTE_MATCH = regexp.MustCompile("")
+var ATTRIBUTE_MATCH = regexp.MustCompile("(\\S+)=(\\w+|\"[^\"]+\"),?")
 
 type Attributable interface {
 	SetAttribute(name, value string)

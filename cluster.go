@@ -5,8 +5,8 @@ import (
 	"regexp"
 )
 
-var ROOT_CLUSTER_MATCH = regexp.MustCompile("")
-var CLUSTER_MATCH = regexp.MustCompile("")
+var ROOT_CLUSTER_MATCH = regexp.MustCompile("^((?:di)?graph)\\s*{((?:.|\\n)*)}")
+var CLUSTER_MATCH = regexp.MustCompile("subgraph cluster_(.*){((?:.|\\n)*?)}")
 
 type Cluster struct {
 	Attributes map[string]string
