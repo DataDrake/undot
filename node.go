@@ -2,7 +2,7 @@ package undot
 
 import "regexp"
 
-var NODE_MATCH = regexp.MustCompile("\\s*(\\S+)\\s+(?:\\s*\\[(.*)\\])?;")
+var NODE_MATCH = regexp.MustCompile("\\s*(\\S+)\\s*(?:\\s+\\[(.*)\\])?;")
 
 type Node struct {
 	Attributes map[string]string
@@ -17,7 +17,7 @@ func (n *Node) SetAttribute(name, value string) {
 }
 
 func ParseNodes(dot string, c *Cluster) string {
-	for _, m := range NODE_MATCH.FindAllStringSubmatch(dot,-1) {
+	for _, m := range NODE_MATCH.FindAllStringSubmatch(dot, -1) {
 		n := NewNode()
 		ParseAttributes(m[2], n)
 		c.Nodes[m[1]] = n

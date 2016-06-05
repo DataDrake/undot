@@ -13,7 +13,7 @@ type Attributable interface {
 
 func ParseAttributes(dot string, a Attributable) string {
 	for _, m := range ATTRIBUTE_MATCH.FindAllStringSubmatch(dot, -1) {
-		m[2] = strings.Replace(m[2],"\"","",-1)
+		m[2] = strings.Replace(m[2], "\"", "", -1)
 		a.SetAttribute(m[1], m[2])
 	}
 	dot = ATTRIBUTE_MATCH.ReplaceAllString(dot, "")
