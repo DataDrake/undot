@@ -6,7 +6,7 @@ import (
 )
 
 var ROOT_CLUSTER_MATCH = regexp.MustCompile("^((?:di)?graph)\\s*{((?:.|\\n)*)}")
-var CLUSTER_MATCH = regexp.MustCompile("subgraph cluster_(.*){((?:.|\\n)*?)}")
+var CLUSTER_MATCH = regexp.MustCompile("subgraph cluster_(\\S*)\\s*{((?:.|\\n)*?)}")
 
 type Cluster struct {
 	Attributes map[string]string
@@ -38,5 +38,6 @@ func ParseClusters(dot string, u *Undot) (string, error) {
 	rm[2] = ParseAttributes(rm[2], r)
 	rm[2] = ParseNodes(rm[2], r)
 	u.Clusters[rm[1]] = r
+	dot = ROOT_CLUSTER_MATCH.ReplaceAllString(dot,"")
 	return dot, nil
 }
