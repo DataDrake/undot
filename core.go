@@ -6,7 +6,7 @@ type Undot struct {
 }
 
 func Parse(dot string) (*Undot, error) {
-	u := &Undot{make(map[string]*Cluster)}
+	u := &Undot{make(map[string]*Cluster),make(map[string]*Edge)}
 	dot = ParseEdges(dot, u)
 	dot, err := ParseClusters(dot, u)
 	return u, err

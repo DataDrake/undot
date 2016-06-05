@@ -17,7 +17,7 @@ func (n *Node) SetAttribute(name, value string) {
 }
 
 func ParseNodes(dot string, c *Cluster) string {
-	for _, m := range NODE_MATCH.FindAllStringSubmatch() {
+	for _, m := range NODE_MATCH.FindAllStringSubmatch(dot,-1) {
 		n := NewNode()
 		ParseAttributes(m[2], n)
 		c.Nodes[m[1]] = n
