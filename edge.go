@@ -24,10 +24,10 @@ func ParseEdges(dot string, u *Undot) string {
 		switch m[2] {
 		case "->":
 			e.NextNode = m[3]
-			u.Edges[m[1]] = append(u.Edges[m[1]],e)
+			u.Edges[m[1]] = append(u.Edges[m[1]], e)
 		case "<-":
 			e.NextNode = m[1]
-			u.Edges[m[3]] = append(u.Edges[m[3]],e)
+			u.Edges[m[3]] = append(u.Edges[m[3]], e)
 		default:
 		}
 

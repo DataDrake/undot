@@ -5,7 +5,7 @@ type Undot struct {
 	Edges    map[string][]*Edge
 }
 
-func NewUndot() *Undot{
+func NewUndot() *Undot {
 	return &Undot{make(map[string]*Cluster), make(map[string][]*Edge)}
 }
 

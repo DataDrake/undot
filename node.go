@@ -2,7 +2,7 @@ package undot
 
 import "regexp"
 
-var NODE_MATCH = regexp.MustCompile("\\s*(\\S+)\\s*(?:\\s+\\[(.*)\\])?;")
+var NODE_MATCH = regexp.MustCompile("\\s+([\\w+]+)\\s*(?:\\s+\\[(.*)\\])?;")
 
 type Node struct {
 	Attributes map[string]string

@@ -16,7 +16,7 @@ func TestParseNodesEmpty(t *testing.T) {
 
 func TestParseNodesSingle(t *testing.T) {
 	c := NewCluster()
-	nodestring := "A;"
+	nodestring := " A;"
 	dot := ParseNodes(nodestring, c)
 	if len(c.Nodes) != 1 {
 		t.Error("Should be one node")
@@ -31,7 +31,7 @@ func TestParseNodesSingle(t *testing.T) {
 
 func TestParseNodesSingleAttributes(t *testing.T) {
 	c := NewCluster()
-	nodestring := "A [label=\"1234 | bob\"];"
+	nodestring := " A [label=\"1234 | bob\"];"
 	dot := ParseNodes(nodestring, c)
 	if len(c.Nodes) != 1 {
 		t.Error("Should be one node")
@@ -52,7 +52,7 @@ func TestParseNodesSingleAttributes(t *testing.T) {
 
 func TestParseNodesMultiple(t *testing.T) {
 	c := NewCluster()
-	nodestring := "A;\n B;\n C;"
+	nodestring := " A;\n B;\n C;"
 	dot := ParseNodes(nodestring, c)
 	if len(c.Nodes) != 3 {
 		t.Error("Should be three nodes")
@@ -73,7 +73,7 @@ func TestParseNodesMultiple(t *testing.T) {
 
 func TestParseNodesMultipleAttributes(t *testing.T) {
 	c := NewCluster()
-	nodestring := "A;\n B [label=1234];\n C;"
+	nodestring := " A;\n B [label=1234];\n C;"
 	dot := ParseNodes(nodestring, c)
 	if len(c.Nodes) != 3 {
 		t.Error("Should be three nodes")

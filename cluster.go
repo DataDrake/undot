@@ -31,13 +31,13 @@ func ParseClusters(dot string, u *Undot) (string, error) {
 		c := NewCluster()
 		m[2] = ParseAttributes(m[2], c)
 		m[2] = ParseNodes(m[2], c)
-
 		u.Clusters[m[1]] = c
 	}
 	dot = CLUSTER_MATCH.ReplaceAllString(dot, "")
-	rm[2] = ParseAttributes(rm[2], r)
+	rm[2] = CLUSTER_MATCH.ReplaceAllString(rm[2], "")
 	rm[2] = ParseNodes(rm[2], r)
+	rm[2] = ParseAttributes(rm[2], r)
 	u.Clusters[rm[1]] = r
-	dot = ROOT_CLUSTER_MATCH.ReplaceAllString(dot,"")
+	dot = ROOT_CLUSTER_MATCH.ReplaceAllString(dot, "")
 	return dot, nil
 }

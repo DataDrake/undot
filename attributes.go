@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var ATTRIBUTE_MATCH = regexp.MustCompile("(\\w+)=(\\w+|\"[^\"]+\"),?")
+var ATTRIBUTE_MATCH = regexp.MustCompile("(\\w+)=(\\w+|\".+?\"),?")
 
 type Attributable interface {
 	SetAttribute(name, value string)

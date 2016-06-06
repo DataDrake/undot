@@ -118,4 +118,3 @@ func TestParseEdgesMultipleAttributes(t *testing.T) {
 		t.Error("dot string should be empty")
 	}
 }
-
