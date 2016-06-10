@@ -25,10 +25,10 @@ func TestParseSimple(t *testing.T) {
 	if len(u.Clusters["0"].Nodes) != 3 {
 		t.Error("Should be three nodes")
 	}
-	if len(u.Clusters["digraph"].Attributes) != 1 {
+	if len(u.Clusters["root"].Attributes) != 1 {
 		t.Error("Should be one attribute")
 	}
-	if len(u.Clusters["digraph"].Nodes) != 2 {
+	if len(u.Clusters["root"].Nodes) != 2 {
 		t.Error("Should be two nodes")
 	}
 

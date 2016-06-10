@@ -29,7 +29,7 @@ func TestParseClustersRoot(t *testing.T) {
 	if err != nil {
 		t.Error("Should not have been an error")
 	}
-	if u.Clusters["graph"] == nil {
+	if u.Clusters["root"] == nil {
 		t.Error("Should have found a root cluster")
 	}
 	if len(dot) != 0 {
@@ -47,10 +47,10 @@ func TestParseClustersRootAttributes(t *testing.T) {
 	if err != nil {
 		t.Error("Should not have been an error")
 	}
-	if u.Clusters["graph"] == nil {
+	if u.Clusters["root"] == nil {
 		t.Error("Should have found a root cluster")
 	}
-	if u.Clusters["graph"].Attributes["rankdir"] == "" {
+	if u.Clusters["root"].Attributes["rankdir"] == "" {
 		t.Error("Should have found an attribute")
 		t.Log(u.Clusters["graph"].Nodes)
 	}
@@ -69,7 +69,7 @@ func TestParseClustersSubcluster(t *testing.T) {
 	if err != nil {
 		t.Error("Should not have been an error")
 	}
-	if u.Clusters["graph"] == nil {
+	if u.Clusters["root"] == nil {
 		t.Error("Should have found a root cluster")
 	}
 	if u.Clusters["1234"] == nil {
