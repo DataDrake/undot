@@ -16,6 +16,5 @@ func ParseAttributes(dot string, a Attributable) string {
 		m[2] = strings.Replace(m[2], "\"", "", -1)
 		a.SetAttribute(m[1], m[2])
 	}
-	dot = ATTRIBUTE_MATCH.ReplaceAllString(dot, "")
-	return dot
+	return ATTRIBUTE_MATCH.ReplaceAllString(dot, "")
 }

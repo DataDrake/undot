@@ -30,8 +30,6 @@ func ParseEdges(dot string, u *Undot) string {
 			u.Edges[m[3]] = append(u.Edges[m[3]], e)
 		default:
 		}
-
 	}
-	dot = EDGE_MATCH.ReplaceAllString(dot, "")
-	return dot
+	return EDGE_MATCH.ReplaceAllString(dot, "")
 }

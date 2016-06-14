@@ -12,6 +12,6 @@ func NewUndot() *Undot {
 func Parse(dot string) (*Undot, error) {
 	u := NewUndot()
 	dot = ParseEdges(dot, u)
-	dot, err := ParseClusters(dot, u)
+	_, err := ParseClusters(dot, u)
 	return u, err
 }

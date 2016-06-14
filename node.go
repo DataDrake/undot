@@ -22,6 +22,5 @@ func ParseNodes(dot string, c *Cluster) string {
 		ParseAttributes(m[2], n)
 		c.Nodes[m[1]] = n
 	}
-	dot = NODE_MATCH.ReplaceAllString(dot, "")
-	return dot
+	return NODE_MATCH.ReplaceAllString(dot, "")
 }
