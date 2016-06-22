@@ -4,7 +4,7 @@ import "testing"
 
 func TestParseAttributesEmpty(t *testing.T) {
 	n := NewNode()
-	attr := ""
+	attr := ``
 	dot := ParseAttributes(attr, n)
 	if len(n.Attributes) != 0 {
 		t.Error("Attributes shoudl be empty")
@@ -16,7 +16,7 @@ func TestParseAttributesEmpty(t *testing.T) {
 
 func TestParseAttributesSingle(t *testing.T) {
 	n := NewNode()
-	attr := "label=1234"
+	attr := `label=1234`
 	dot := ParseAttributes(attr, n)
 	if len(n.Attributes) != 1 {
 		t.Error("Attributes should have single entry")
@@ -34,7 +34,7 @@ func TestParseAttributesSingle(t *testing.T) {
 
 func TestParseAttributesSingleQuoted(t *testing.T) {
 	n := NewNode()
-	attr := "label=\"1234\""
+	attr := `label="1234"`
 	dot := ParseAttributes(attr, n)
 	if len(n.Attributes) != 1 {
 		t.Error("Attributes should have single entry")
@@ -52,7 +52,7 @@ func TestParseAttributesSingleQuoted(t *testing.T) {
 
 func TestParseAttributesSingleQuotedMultivar(t *testing.T) {
 	n := NewNode()
-	attr := "label=\"1234 | abcdef | hello\""
+	attr := `label="1234 | abcdef | hello"`
 	dot := ParseAttributes(attr, n)
 	if len(n.Attributes) != 1 {
 		t.Error("Attributes should have single entry")
@@ -70,7 +70,7 @@ func TestParseAttributesSingleQuotedMultivar(t *testing.T) {
 
 func TestParseAttributesMultiple(t *testing.T) {
 	n := NewNode()
-	attr := "label=1234,type=circle,value=\"1234 | bob\""
+	attr := `label=1234,type=circle,value="1234 | bob"`
 	dot := ParseAttributes(attr, n)
 	if len(n.Attributes) != 3 {
 		t.Error("Attributes should have three entries")

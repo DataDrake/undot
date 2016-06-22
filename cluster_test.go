@@ -21,8 +21,11 @@ func TestParseClustersEmpty(t *testing.T) {
 
 func TestParseClustersRoot(t *testing.T) {
 	u := NewUndot()
-	clusterstring := "graph { }"
-	dot, err := ParseClusters(clusterstring, u)
+	clusterstring :=
+	`graph {
+	}
+	`
+	_, err := ParseClusters(clusterstring, u)
 	if len(u.Clusters) != 1 {
 		t.Error("Should be a single cluster")
 	}
@@ -32,15 +35,16 @@ func TestParseClustersRoot(t *testing.T) {
 	if u.Clusters["root"] == nil {
 		t.Error("Should have found a root cluster")
 	}
-	if len(dot) != 0 {
-		t.Error("dot string should be empty")
-	}
 }
 
 func TestParseClustersRootAttributes(t *testing.T) {
 	u := NewUndot()
-	clusterstring := "graph { rankdir=LR; }"
-	dot, err := ParseClusters(clusterstring, u)
+	clusterstring :=
+	`graph {
+		rankdir=LR;
+	}
+	`
+	_, err := ParseClusters(clusterstring, u)
 	if len(u.Clusters) != 1 {
 		t.Error("Should be a single cluster")
 	}
@@ -54,15 +58,17 @@ func TestParseClustersRootAttributes(t *testing.T) {
 		t.Error("Should have found an attribute")
 		t.Log(u.Clusters["graph"].Nodes)
 	}
-	if len(dot) != 0 {
-		t.Error("dot string should be empty")
-	}
 }
 
 func TestParseClustersSubcluster(t *testing.T) {
 	u := NewUndot()
-	clusterstring := "graph { subgraph cluster_1234 { } }"
-	dot, err := ParseClusters(clusterstring, u)
+	clusterstring :=
+	`graph {
+		subgraph cluster_1234 {
+		}
+	}
+	`
+	_, err := ParseClusters(clusterstring, u)
 	if len(u.Clusters) != 2 {
 		t.Error("Should be a single cluster")
 	}
@@ -75,8 +81,5 @@ func TestParseClustersSubcluster(t *testing.T) {
 	if u.Clusters["1234"] == nil {
 		t.Error("Should have found cluster '1234'")
 		t.Log(u.Clusters)
-	}
-	if len(dot) != 0 {
-		t.Error("dot string should be empty")
 	}
 }

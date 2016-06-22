@@ -4,7 +4,7 @@ import "testing"
 
 func TestParseEdgesEmpty(t *testing.T) {
 	u := NewUndot()
-	edgestring := ""
+	edgestring := ``
 	dot := ParseEdges(edgestring, u)
 	if len(u.Edges) != 0 {
 		t.Error("Should be no edges")
@@ -16,7 +16,7 @@ func TestParseEdgesEmpty(t *testing.T) {
 
 func TestParseEdgesSingle(t *testing.T) {
 	u := NewUndot()
-	edgestring := "A -> B;"
+	edgestring := `A -> B;`
 	dot := ParseEdges(edgestring, u)
 	if len(u.Edges) != 1 {
 		t.Error("Should be one edge")
@@ -34,7 +34,7 @@ func TestParseEdgesSingle(t *testing.T) {
 
 func TestParseEdgesSingleAttributes(t *testing.T) {
 	u := NewUndot()
-	edgestring := "A -> B [label=\"1234 | bob\"];"
+	edgestring := `A -> B [label="1234 | bob"];`
 	dot := ParseEdges(edgestring, u)
 	if len(u.Edges) != 1 {
 		t.Error("Should be one edge")
@@ -58,7 +58,10 @@ func TestParseEdgesSingleAttributes(t *testing.T) {
 
 func TestParseEdgesMultiple(t *testing.T) {
 	u := NewUndot()
-	edgestring := "A -> B;\n B <- C;\n C -> D;"
+	edgestring :=
+	`A -> B;
+	B <- C;
+	C -> D;`
 	dot := ParseEdges(edgestring, u)
 	if len(u.Edges) != 2 {
 		t.Error("Should be two sets of edges")
@@ -88,7 +91,10 @@ func TestParseEdgesMultiple(t *testing.T) {
 
 func TestParseEdgesMultipleAttributes(t *testing.T) {
 	u := NewUndot()
-	edgestring := "A -> B;\n B <- C [label=1234];\n C -> D;"
+	edgestring :=
+	`A -> B;
+	B <- C [label=1234];
+	C -> D;`
 	dot := ParseEdges(edgestring, u)
 	if len(u.Edges) != 2 {
 		t.Error("Should be two sets of edges")

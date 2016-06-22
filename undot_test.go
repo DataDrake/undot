@@ -4,7 +4,21 @@ import (
 	"testing"
 )
 
-var SIMPLE_DOT = string("digraph {\nnode [shape=record];\nrankdir=LR;\nsubgraph cluster_0{\nlabel=\"CMP:1\";\nA [label=\"A | 10\"];\nB [label=\"B | 15\"];\nC [label=\"C | 5\"];\n}\nClient [label=\"Client | n/a\"];\nA -> B;\nA -> C;\nClient -> A [label=\"(Ethernet,10M,3KM)\"];\n}")
+var SIMPLE_DOT =
+`digraph {
+	node [shape=record];
+	rankdir=LR;
+	subgraph cluster_0{
+		label="CMP:1";
+		A [label="A | 10"];
+		B [label="B | 15"];
+		C [label="C | 5"];
+	}
+	Client [label="Client | n/a"];
+	A -> B;
+	A -> C;
+	Client -> A [label="(Ethernet,10M,3KM)"];
+}`
 
 func TestParseEmpty(t *testing.T) {
 	dotstring := ""
