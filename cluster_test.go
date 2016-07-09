@@ -22,7 +22,7 @@ func TestParseClustersEmpty(t *testing.T) {
 func TestParseClustersRoot(t *testing.T) {
 	u := NewUndot()
 	clusterstring :=
-	`graph {
+		`graph {
 	}
 	`
 	_, err := ParseClusters(clusterstring, u)
@@ -40,7 +40,7 @@ func TestParseClustersRoot(t *testing.T) {
 func TestParseClustersRootAttributes(t *testing.T) {
 	u := NewUndot()
 	clusterstring :=
-	`graph {
+		`graph {
 		rankdir=LR;
 	}
 	`
@@ -63,7 +63,7 @@ func TestParseClustersRootAttributes(t *testing.T) {
 func TestParseClustersSubcluster(t *testing.T) {
 	u := NewUndot()
 	clusterstring :=
-	`graph {
+		`graph {
 		subgraph cluster_1234 {
 		}
 	}

@@ -53,7 +53,7 @@ func TestParseNodesSingleAttributes(t *testing.T) {
 func TestParseNodesMultiple(t *testing.T) {
 	c := NewCluster()
 	nodestring :=
-	` A;
+		` A;
 	 B;
 	 C;`
 	dot := ParseNodes(nodestring, c)
@@ -77,7 +77,7 @@ func TestParseNodesMultiple(t *testing.T) {
 func TestParseNodesMultipleAttributes(t *testing.T) {
 	c := NewCluster()
 	nodestring :=
-	` A;
+		` A;
 	 B [label=1234];
 	 C;`
 	dot := ParseNodes(nodestring, c)

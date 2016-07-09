@@ -4,8 +4,7 @@ import (
 	"testing"
 )
 
-var SIMPLE_DOT =
-`digraph {
+var SIMPLE_DOT = `digraph {
 	node [shape=record];
 	rankdir=LR;
 	subgraph cluster_0{
@@ -57,5 +56,13 @@ func TestParseSimple(t *testing.T) {
 	}
 	if err != nil {
 		t.Error("Should not have been an error")
+	}
+	n := u.GetNodeByName("Client")
+	if n == nil {
+		t.Error("Should have found 'Client'")
+	}
+	n2 := u.GetNodeByName("bob")
+	if n2 != nil {
+		t.Error("should not have found 'bob'")
 	}
 }

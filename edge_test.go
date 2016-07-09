@@ -59,7 +59,7 @@ func TestParseEdgesSingleAttributes(t *testing.T) {
 func TestParseEdgesMultiple(t *testing.T) {
 	u := NewUndot()
 	edgestring :=
-	`A -> B;
+		`A -> B;
 	B <- C;
 	C -> D;`
 	dot := ParseEdges(edgestring, u)
@@ -92,7 +92,7 @@ func TestParseEdgesMultiple(t *testing.T) {
 func TestParseEdgesMultipleAttributes(t *testing.T) {
 	u := NewUndot()
 	edgestring :=
-	`A -> B;
+		`A -> B;
 	B <- C [label=1234];
 	C -> D;`
 	dot := ParseEdges(edgestring, u)
