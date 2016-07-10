@@ -9,14 +9,14 @@ func NewUndot() *Undot {
 	return &Undot{make(map[string]*Cluster), make(map[string][]*Edge)}
 }
 
-func (u *Undot) GetNodeByName(name string) (*Node, *Cluster) {
-	for _, c := range u.Clusters {
+func (u *Undot) GetNodeByName(name string) (*Node, string) {
+	for cname, c := range u.Clusters {
 		n := c.Nodes[name]
 		if n != nil {
-			return n, c
+			return n, cname
 		}
 	}
-	return nil, nil
+	return nil, ""
 }
 
 func Parse(dot string) (*Undot, error) {
