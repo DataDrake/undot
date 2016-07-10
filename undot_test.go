@@ -57,12 +57,18 @@ func TestParseSimple(t *testing.T) {
 	if err != nil {
 		t.Error("Should not have been an error")
 	}
-	n := u.GetNodeByName("Client")
+	n, c := u.GetNodeByName("Client")
 	if n == nil {
 		t.Error("Should have found 'Client'")
 	}
-	n2 := u.GetNodeByName("bob")
+	if c == nil {
+		t.Error("Should have found 'root' Cluster")
+	}
+	n2, c2 := u.GetNodeByName("bob")
 	if n2 != nil {
 		t.Error("should not have found 'bob'")
+	}
+	if c2 != nil {
+		t.Error("should not have found cluster")
 	}
 }
