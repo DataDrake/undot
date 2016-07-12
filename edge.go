@@ -1,6 +1,9 @@
 package undot
 
-import "regexp"
+import (
+	"regexp"
+	"strings"
+)
 
 var EDGE_MATCH = regexp.MustCompile("\\s*(\\S+)\\s+(<?->?)\\s+(\\S+)(?:\\s*\\[(.*)\\])?;")
 
@@ -23,10 +26,22 @@ func ParseEdges(dot string, u *Undot) string {
 		ParseAttributes(m[4], e)
 		switch m[2] {
 		case "->":
+			if strings.HasPrefix(m[3], "\"") && strings.HasSuffix(m[3], "\"") {
+				m[3] = m[3][1 : len(m[3])-1]
+			}
 			e.NextNode = m[3]
+			if strings.HasPrefix(m[1], "\"") && strings.HasSuffix(m[1], "\"") {
+				m[1] = m[1][1 : len(m[1])-1]
+			}
 			u.Edges[m[1]] = append(u.Edges[m[1]], e)
 		case "<-":
+			if strings.HasPrefix(m[1], "\"") && strings.HasSuffix(m[1], "\"") {
+				m[1] = m[1][1 : len(m[1])-1]
+			}
 			e.NextNode = m[1]
+			if strings.HasPrefix(m[3], "\"") && strings.HasSuffix(m[3], "\"") {
+				m[3] = m[3][1 : len(m[3])-1]
+			}
 			u.Edges[m[3]] = append(u.Edges[m[3]], e)
 		default:
 		}

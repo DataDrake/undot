@@ -72,3 +72,50 @@ func TestParseSimple(t *testing.T) {
 		t.Error("should not have found cluster")
 	}
 }
+
+var SIMPLE_DOT2 = `digraph{
+	"A" [label="S0"];
+	Switch [label="Switch | 1500"];
+	"A" -> Switch [label="100m | 10n"];
+}
+`
+
+func TestParseSimple2(t *testing.T) {
+	u, err := Parse(SIMPLE_DOT2)
+	if len(u.Clusters) != 1 {
+		t.Error("Should be one clusters")
+	}
+	if len(u.Clusters["root"].Attributes) != 0 {
+		t.Error("Should be no attribute")
+	}
+	if len(u.Clusters["root"].Nodes) != 2 {
+		t.Error("Should be two nodes")
+	}
+
+	if len(u.Edges) != 1 {
+		t.Error("Should be one edge")
+	}
+	if len(u.Edges["A"]) != 1 {
+		t.Error("Should be one edge for 'A'")
+	}
+	if len(u.Edges["Switch"]) != 0 {
+		t.Error("Should be no edges for 'Switch'")
+	}
+	if err != nil {
+		t.Error("Should not have been an error")
+	}
+	n, c := u.GetNodeByName("A")
+	if n == nil {
+		t.Error("Should have found 'A'")
+	}
+	if c == "" {
+		t.Error("Should have found 'root' Cluster")
+	}
+	n2, c2 := u.GetNodeByName("Bob")
+	if n2 != nil {
+		t.Error("should not have found 'Bob'")
+	}
+	if c2 != "" {
+		t.Error("should not have found cluster")
+	}
+}
